@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import {Link} from 'react-router-dom';
 
 export default function ProductList() {
   const [products, setProducts] = useState([]);
@@ -10,25 +11,16 @@ export default function ProductList() {
       .catch((error) => console.error("Error fetching data: ", error));
   }, []);
 
-  return <div>
-    <h1>Product List</h1>
-    <ul>
-        {
-            products.map((product)=>(
-                <li key={product.id}>
-                    Name: {product.name}
-                    <hr />
-                    Category: {product.category}
-                    <hr />
-                    Price: {product.price}
-                    <hr />
-                    Quantity: {product.quantity}
-                </li>
-            ))
-        }
-     
-    </ul>
-    
-
-  </div>;
+  return (
+    <div>
+      <h1>Product List</h1>
+      <ul>
+        {products.map((product) => (
+          <li key={product.id}>
+            <Link to={`/update/${product.id}`}>{product.name}</Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 }
