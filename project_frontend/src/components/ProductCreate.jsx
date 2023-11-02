@@ -1,8 +1,6 @@
 import { useState } from "react";
 
-import { useNavigate } from 'react-router-dom';
-
-
+import { useNavigate } from "react-router-dom";
 
 export default function ProductCreate() {
   const [product, setProduct] = useState({
@@ -11,7 +9,7 @@ export default function ProductCreate() {
     price: "",
     quantity: "",
   });
-  
+
   const navigate = useNavigate();
 
   const handleInputChange = (e) => {
@@ -19,20 +17,33 @@ export default function ProductCreate() {
     setProduct({ ...product, [name]: value });
   };
 
-  const handleCreateProduct = () => {
-    fetch('http://127.0.0.1:8000/api/products/create/', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(product),
-    })
-      .then((response) => response.json())
-      .then(() => {
+  const handleCreateProduct = async () => {
+    try {
+      const response = await fetch(
+        "http://127.0.0.1:8000/api/products/create/",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(product),
+        }
+      );
+
+      if (response.ok) {
         // Handle success, e.g., redirect to the product list
-        // navigate("/", { replace: true });
-      })
-      .catch((error) => console.error('Error creating product:', error));
+        // navigate("/products", { replace: true });
+        console.log("Product created");
+      } else {
+        // Handle error
+
+        console.error("Error creating product:", response.statusText);
+      }
+    } catch (error) {
+      // Handle error
+
+      console.error("Error creating product:", error);
+    }
   };
 
   return (
@@ -77,6 +88,7 @@ export default function ProductCreate() {
         </div>
         <button onClick={handleCreateProduct}>Create Product</button>
       </form>
+      <button onClick={() => navigate("/")}>Go to Product List</button>
     </div>
   );
 }
