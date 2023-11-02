@@ -6,6 +6,7 @@ import {
   Routes
 } from 'react-router-dom';
 import ProductCreate from './components/ProductCreate';
+import ProductUpdate from './components/ProductUpdate';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -16,6 +17,7 @@ function App() {
         <Routes>
           <Route path="/" element={<ProductList />} />
           <Route path="/create" element={<ProductCreate/>}/>
+          <Route path="/update/:id" element={<ProductUpdate/>} />
         </Routes>
       </Router>
     </div>
