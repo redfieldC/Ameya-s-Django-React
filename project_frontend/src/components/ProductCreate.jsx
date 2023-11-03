@@ -34,7 +34,7 @@ export default function ProductCreate() {
         // Handle success, e.g., redirect to the product list
         // navigate("/products", { replace: true });
         console.log("Product created");
-        // navigate("/");
+        navigate("/");
       } else {
         // Handle error
 

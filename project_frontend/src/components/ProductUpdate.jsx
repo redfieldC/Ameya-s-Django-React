@@ -81,6 +81,7 @@ export default function ProductUpdate() {
         </div>
         <button onClick={handleUpdateProduct}>Update Product</button>
       </form>
+      <button onClick={() => navigate("/")}>Go to Product List</button>
     </div>
   );
 }

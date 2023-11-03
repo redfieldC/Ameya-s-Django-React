@@ -24,6 +24,7 @@ export default function ProductList() {
             {/* <Link to={`/update/${product.id}`}>{product.name}</Link> */}
             <Link to={`/detail/${product.id}`}>{product.name}</Link>
             <button onClick={()=>navigate(`/update/${product.id}`,{state:product})}>Update Product</button>
+            <button onClick={()=>navigate(`/delete/${product.id}`,{state:product})}>Delete Product</button>
           </li>
         ))}
       </ul>
