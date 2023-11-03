@@ -23,6 +23,7 @@ export default function ProductList() {
           <li key={product.id}>
             {/* <Link to={`/update/${product.id}`}>{product.name}</Link> */}
             <Link to={`/detail/${product.id}`}>{product.name}</Link>
+            <button onClick={()=>navigate(`/update/${product.id}`,{state:product})}>Update Product</button>
           </li>
         ))}
       </ul>

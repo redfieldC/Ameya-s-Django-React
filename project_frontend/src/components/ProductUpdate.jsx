@@ -12,7 +12,7 @@ export default function ProductUpdate() {
   });
 
   useEffect(() => {
-    fetch(`http://127.0.0.1:8000/api/products/${id}/`)
+    fetch(`http://127.0.0.1:8000/api/products/detail/${id}/`)
       .then((response) => response.json())
       .then((data) => setProduct(data))
       .catch((error) => console.log("Error fetching product:", error));
@@ -34,6 +34,7 @@ export default function ProductUpdate() {
       .then(() => {
         // Handle success, e.g., redirect to the product list
         // history.push("/");
+        navigate("/");
       })
       .catch((error) => console.error("Error updating product:", error));
   };
