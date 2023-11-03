@@ -7,6 +7,8 @@ import {
 } from 'react-router-dom';
 import ProductCreate from './components/ProductCreate';
 import ProductUpdate from './components/ProductUpdate';
+import ProductDetail from './components/ProductDetail';
+
 
 function App() {
   const [count, setCount] = useState(0);
@@ -18,6 +20,7 @@ function App() {
           <Route path="/" element={<ProductList />} />
           <Route path="/create" element={<ProductCreate/>}/>
           <Route path="/update/:id" element={<ProductUpdate/>} />
+          <Route path="/detail/:id" element={<ProductDetail/>} />
         </Routes>
       </Router>
     </div>
